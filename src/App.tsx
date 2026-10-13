@@ -11,23 +11,22 @@ import { RefinishingFocus } from './components/RefinishingFocus.tsx';
 import { Reviews } from './components/Reviews.tsx';
 import { ServiceAreas } from './components/ServiceAreas.tsx';
 import { EstimateSection } from './components/EstimateSection.tsx';
-import { EstimateModal } from './components/EstimateModal.tsx';
 import { Footer } from './components/Footer.tsx';
 import { MobileActionBar } from './components/MobileActionBar.tsx';
 import { LegalModals } from './components/LegalModals.tsx';
 
 export function App() {
-  const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | undefined>(undefined);
   const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | null>(null);
 
   const handleOpenEstimate = (service?: string) => {
-    setSelectedService(service);
-    setIsEstimateModalOpen(true);
-  };
-
-  const handleCloseEstimate = () => {
-    setIsEstimateModalOpen(false);
+    if (service) {
+      setSelectedService(service);
+    }
+    const element = document.getElementById('estimate-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -76,13 +75,6 @@ export function App() {
 
       {/* Mobile Sticky Bottom Action Bar (Click-to-call & Fast Estimate) */}
       <MobileActionBar onOpenEstimate={() => handleOpenEstimate()} />
-
-      {/* Estimate Modal Overlay */}
-      <EstimateModal
-        isOpen={isEstimateModalOpen}
-        onClose={handleCloseEstimate}
-        service={selectedService}
-      />
 
       {/* Privacy & Terms Modals */}
       <LegalModals

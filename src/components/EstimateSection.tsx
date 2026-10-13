@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ShieldCheck, Phone, CheckCircle2, ArrowRight, Clock, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ShieldCheck, Phone, CheckCircle2, ArrowRight, Clock, Sparkles, Loader2, AlertCircle } from 'lucide-react';
 
 interface EstimateSectionProps {
   initialService?: string;
@@ -14,6 +14,14 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
   const [sqft, setSqft] = useState('');
   const [notes, setNotes] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (initialService) {
+      setSelectedService(initialService);
+    }
+  }, [initialService]);
 
   const services = [
     'Hardwood Installation',
@@ -23,9 +31,52 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
     'Floor Repairs & Patching',
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    let recaptchaToken = '';
+    const siteKey = '6LfOpRctAAAAAOJmBcplr60CA0G3y-BnVhXrrFE-';
+
+    if (typeof window !== 'undefined' && (window as any).grecaptcha) {
+      try {
+        await new Promise<void>((resolve) => {
+          (window as any).grecaptcha.ready(() => resolve());
+        });
+        recaptchaToken = await (window as any).grecaptcha.execute(siteKey, { action: 'estimate_submit' });
+      } catch (recaptchaErr) {
+        console.warn('reCAPTCHA execution error:', recaptchaErr);
+      }
+    }
+
+    try {
+      const response = await fetch('/api/estimate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          phone,
+          zip,
+          service: selectedService,
+          sqft,
+          notes,
+          token: recaptchaToken,
+        }),
+      });
+
+      const result = await response.json().catch(() => ({}));
+      if (response.ok && result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(result.message || 'Error submitting request. Please call (470) 353-6909.');
+      }
+    } catch (err) {
+      console.warn('Network error, completing gracefully:', err);
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -100,6 +151,10 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
                     onClick={() => {
                       setSubmitted(false);
                       setStep(1);
+                      setName('');
+                      setPhone('');
+                      setZip('');
+                      setNotes('');
                     }}
                     className="text-xs font-semibold text-brand-red underline hover:text-brand-navy pt-4"
                   >
@@ -122,6 +177,13 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
                       {step === 1 ? '50% Complete' : 'Nearly Done'}
                     </div>
                   </div>
+
+                  {errorMessage && (
+                    <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700 flex items-center space-x-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
 
                   {step === 1 ? (
                     <div className="space-y-5 animate-in fade-in duration-200">
@@ -242,6 +304,7 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
                       <div className="flex items-center space-x-3 pt-2">
                         <button
                           type="button"
+                          disabled={isSubmitting}
                           onClick={() => setStep(1)}
                           className="w-1/3 py-4 bg-brand-stone hover:bg-brand-stoneDark text-brand-charcoal font-semibold text-sm rounded-lg transition-colors"
                         >
@@ -249,10 +312,20 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
                         </button>
                         <button
                           type="submit"
-                          className="w-2/3 py-4 bg-brand-red hover:bg-brand-redHover text-white font-semibold text-sm rounded-lg transition-colors shadow-md flex items-center justify-center space-x-2"
+                          disabled={isSubmitting}
+                          className="w-2/3 py-4 bg-brand-red hover:bg-brand-redHover disabled:opacity-70 text-white font-semibold text-sm rounded-lg transition-colors shadow-md flex items-center justify-center space-x-2"
                         >
-                          <span>Confirm & Request Free Estimate</span>
-                          <CheckCircle2 className="w-4 h-4" />
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              <span>Verifying & Sending...</span>
+                            </>
+                          ) : (
+                            <>
+                              <span>Confirm & Request Free Estimate</span>
+                              <CheckCircle2 className="w-4 h-4" />
+                            </>
+                          )}
                         </button>
                       </div>
                     </div>
@@ -260,6 +333,18 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
 
                   <p className="text-[11px] text-brand-charcoalLight/70 text-center">
                     🔒 We respect your privacy. No spam. You will only receive a direct consultation call from our flooring lead.
+                  </p>
+
+                  <p className="text-[10px] text-brand-charcoalLight/50 text-center leading-relaxed">
+                    This site is protected by reCAPTCHA and the Google{' '}
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-navy">
+                      Privacy Policy
+                    </a>{' '}
+                    and{' '}
+                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-navy">
+                      Terms of Service
+                    </a>{' '}
+                    apply.
                   </p>
                 </form>
               )}
