@@ -67,29 +67,25 @@ export const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ onOpenEsti
           >
             {/* After Image (Full width background) */}
             <img
-              src="/images/site_img_01.jpg"
-              alt="After Refinishing - Miracle Flooring"
+              src="/images/hardwood_after.jpg"
+              alt="After Refinishing - Restored Satin Hardwood"
               className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
             />
-            <div className="absolute top-4 right-4 bg-brand-navy/90 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-white/20 z-10">
+            <div className="absolute top-4 right-4 bg-brand-navy/90 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-white/20 z-10 shadow-lg">
               After: Restored Satin Hardwood
             </div>
 
-            {/* Before Image (Clipped layer) */}
+            {/* Before Image (Clipped layer using clip-path for subpixel alignment) */}
             <div
-              className="absolute inset-0 overflow-hidden pointer-events-none"
-              style={{ width: `${sliderPosition}%` }}
+              className="absolute inset-0 pointer-events-none"
+              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
               <img
-                src="/images/site_img_06.jpg"
-                alt="Before Refinishing - Worn Hardwood"
-                className="absolute inset-0 w-full h-full object-cover object-center max-w-none"
-                style={{
-                  width: containerRef.current ? `${containerRef.current.clientWidth}px` : '100%',
-                  height: '100%',
-                }}
+                src="/images/hardwood_before.jpg"
+                alt="Before Refinishing - Worn & Scratched Hardwood"
+                className="w-full h-full object-cover object-center"
               />
-              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-white/20 z-10">
+              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full border border-white/20 z-10 shadow-lg">
                 Before: Worn & Scratched
               </div>
             </div>
