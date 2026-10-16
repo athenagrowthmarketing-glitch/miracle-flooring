@@ -77,11 +77,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenLegal }) => {
                   Floor Patching & Board Weaving Repairs
                 </a>
               </li>
-              <li>
-                <a href="#before-after" className="hover:text-brand-oak transition-colors">
-                  Before & After Transformations
-                </a>
-              </li>
             </ul>
           </div>
 

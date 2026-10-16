@@ -4,7 +4,6 @@ import { Hero } from './components/Hero.tsx';
 import { ProofStrip } from './components/ProofStrip.tsx';
 import { PositioningNarrative } from './components/PositioningNarrative.tsx';
 import { Services } from './components/Services.tsx';
-import { BeforeAfterSlider } from './components/BeforeAfterSlider.tsx';
 import { Portfolio } from './components/Portfolio.tsx';
 import { Process } from './components/Process.tsx';
 import { RefinishingFocus } from './components/RefinishingFocus.tsx';
@@ -48,10 +47,7 @@ export function App() {
         {/* 04. Core Flooring Services (2x2 High Craft Grid) */}
         <Services onSelectService={(serviceTitle) => handleOpenEstimate(serviceTitle)} />
 
-        {/* 05. Interactive Before & After Transformation Slider */}
-        <BeforeAfterSlider onOpenEstimate={() => handleOpenEstimate('Dust-Controlled Refinishing')} />
-
-        {/* 06. Featured Project Portfolio */}
+        {/* 05. Featured Project Portfolio */}
         <Portfolio onOpenEstimate={() => handleOpenEstimate()} />
 
         {/* 07. The 4-Step Miracle Craftsmanship Standard (Process) */}

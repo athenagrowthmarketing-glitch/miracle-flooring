@@ -115,9 +115,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimate }) => {
               )}
             </div>
 
-            <a href="#before-after" className="hover:text-brand-red transition-colors">
-              Before & After
-            </a>
             <a href="#portfolio" className="hover:text-brand-red transition-colors">
               Projects
             </a>
@@ -190,13 +187,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimate }) => {
             </div>
 
             <div className="pt-2 border-t border-brand-charcoal/10 space-y-1">
-              <a
-                href="#before-after"
-                className="block px-3 py-2 text-brand-charcoal font-medium rounded hover:bg-brand-stone"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Before & After
-              </a>
               <a
                 href="#portfolio"
                 className="block px-3 py-2 text-brand-charcoal font-medium rounded hover:bg-brand-stone"
