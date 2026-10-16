@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://miracleflooringa.com/</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://miracleflooringa.com/images/logo_white_bg.png</image:loc>
+      <image:title>Miracle Flooring Logo</image:title>
+      <image:caption>Miracle Flooring - Hardwood, Refinishing and LVP in Marietta, GA</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://miracleflooringa.com/images/site_img_01.jpg</image:loc>
+      <image:title>Custom Hardwood Flooring Installation</image:title>
+      <image:caption>Herringbone solid wood flooring installation in Metro Atlanta</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://miracleflooringa.com/#services</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://miracleflooringa.com/#portfolio</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://miracleflooringa.com/#process</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://miracleflooringa.com/#reviews</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://miracleflooringa.com/#service-areas</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://miracleflooringa.com/#estimate-section</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

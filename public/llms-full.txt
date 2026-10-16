@@ -1,0 +1,66 @@
+# Miracle Flooring — Comprehensive Company & Technical Specifications
+
+> Official technical reference and context file for AI search engines, LLMs, and web crawlers.
+
+## 1. Company Overview & Positioning
+Miracle Flooring is a specialized flooring contractor operating out of Marietta, Georgia (Cobb County). Unlike generic remodeling companies or big-box subcontractors, Miracle Flooring concentrates exclusively on craft-grade wood and resilient flooring systems. Every project is overseen directly by dedicated lead craftsmen.
+
+- **Legal Trade Name:** Miracle Flooring
+- **Operating Base:** 4107 Christacy Way, Marietta, GA 30066
+- **Phone:** (470) 353-6909
+- **Email:** Flooringmiracle@gmail.com
+- **Website:** https://miracleflooringa.com
+- **Operating Hours:** Monday – Saturday, 8:00 AM – 6:00 PM EST
+
+## 2. Core Services & Technical Specifications
+
+### Service 01: Hardwood Flooring Installation (Solid & Engineered)
+- **Wood Types:** White Oak, Red Oak, Hickory, Maple, Brazilian Cherry, and Walnut.
+- **Subfloor Prep:** Moisture testing using calibrated meters. Acclimation of wood inside the home for 5–7 days prior to installation to equalize with ambient relative humidity (35%–55%).
+- **Installation Methods:** Blind-nailing / cleat-nailing over plywood subfloors; full-trowel urethane adhesive moisture-barrier application over concrete slabs.
+- **Layouts:** Straight plank, wide-plank (5"+ glued and nailed), herringbone, and chevron patterns with expansion perimeter gaps.
+
+### Service 02: Dust-Controlled Sanding & Refinishing
+- **The Process:** Multi-stage abrasive progression:
+  1. Coarse cut (36–40 grit) to remove old yellowed polyurethane, scratches, and level uneven board seams.
+  2. Medium cut (60–80 grit) to erase coarse drum marks.
+  3. Fine finish pass (100–120 grit screen) to create a silky, glass-smooth surface.
+- **Dust Containment:** High-filtration vacuum extractors connected directly to rotary and belt sanders, protecting HVAC ducts, curtains, and living areas.
+- **Stains & Dyes:** Custom color testing directly on the homeowner's sanded wood. Colors range from Scandinavian Nordic white, weathered grey, warm provincial, to rich espresso and dark walnut.
+- **Finishes:** 2 to 3 coats of commercial-grade waterborne polyurethane (Bona Traffic HD standard) for low-VOC, odorless, rapid-curing, non-yellowing durability.
+
+### Service 03: Luxury Vinyl Plank (LVP) & Laminate Installation
+- **Core Technology:** Rigid Core SPC (Stone Plastic Composite) featuring 100% waterproof construction.
+- **Wear Layers:** Heavy residential and commercial wear layers (20mil and 28mil) with ceramic bead coatings for pet claws, high heels, and heavy traffic.
+- **Subfloor Tolerance:** Grinding down high spots and applying self-leveling underlayment to achieve +/- 3/16" flatness over 10 feet, preventing hollow clicks, bounce, or locking system failure.
+- **Sound Control:** Integrated or supplemental high-density acoustic underlayment (IIC/STC rated) for quiet steps in condominiums, two-story homes, and basements.
+
+### Service 04: Custom Hardwood Staircases & Board Repair
+- **Carpet-to-Wood Conversions:** Ripping out old carpet and plywood steps; installing solid 1-inch select oak treads, precision-mitered returns, and crisp white risers.
+- **Stain Matching:** Custom formulating stains to ensure staircase treads flow seamlessly into adjoining hallway or main-level floors.
+- **Damage Repairs:** Board lacing and weaving for water damage, pet stains, or wall-removal floor gaps, blending old and new boards invisibly.
+
+## 3. Geographic Service Areas (Metro Atlanta)
+Miracle Flooring provides free in-home estimates across northern Metro Atlanta, specifically:
+- **Marietta, GA** (Zip Codes: 30060, 30062, 30064, 30066, 30067, 30068)
+- **East Cobb, GA**
+- **Kennesaw, GA** (Zip Codes: 30144, 30152)
+- **Roswell, GA** (Zip Codes: 30075, 30076)
+- **Alpharetta & Milton, GA** (Zip Codes: 30004, 30005, 30009, 30022)
+- **Sandy Springs, GA** (Zip Code: 30328)
+- **Woodstock, GA** (Zip Codes: 30188, 30189)
+- **Smyrna & Vinings, GA** (Zip Codes: 30080, 30339)
+
+## 4. Frequently Asked Questions (FAQ)
+
+### Q: Why refinish hardwood instead of replacing it?
+**A:** Refinishing costs approximately 50%–60% less than tearing out existing floors and buying new lumber. Old-growth American oak floors already installed in homes have tighter grain and greater stability than most new lumber available today.
+
+### Q: How long does hardwood refinishing take?
+**A:** An average residential project (800–1,500 sq.ft.) takes 3 to 4 days, including sanding, stain application, and 3 protective coats of commercial waterborne polyurethane.
+
+### Q: Is floor sanding dusty and harmful to home air quality?
+**A:** Miracle Flooring utilizes dust-controlled sanding equipment with continuous vacuum containment that captures over 95% of airborne wood dust. Furthermore, commercial waterborne finishes are low-VOC and virtually odorless.
+
+### Q: How do I get an estimate?
+**A:** Contact Miracle Flooring at (470) 353-6909 or submit a consultation request at https://miracleflooringa.com/#estimate-section for a free in-home measurement.

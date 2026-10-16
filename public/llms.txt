@@ -1,0 +1,23 @@
+# Miracle Flooring
+
+> Premier craft-driven hardwood installation, dust-controlled sanding & refinishing, luxury vinyl plank (LVP), and custom staircases in Marietta and North Metro Atlanta, GA.
+
+## Overview
+Miracle Flooring is a specialized flooring contractor based in Marietta, Cobb County, Georgia (4107 Christacy Way, Marietta, GA 30066). The company provides precision wood flooring solutions for residential and commercial property owners seeking high-ticket craftsmanship, dust containment, transparent pricing, and direct owner-supervised installations.
+
+## Core Capabilities
+- [Hardwood Flooring Installation](https://miracleflooringa.com/#services): Solid & engineered hardwood installation, herringbone and plank layouts, subfloor moisture testing, and wood acclimation protocols.
+- [Dust-Controlled Sanding & Refinishing](https://miracleflooringa.com/#services): Multi-stage rotary sanding with particle containment, custom stain matching, and commercial-grade low-VOC waterborne polyurethane finishes (matte, satin, semi-gloss).
+- [Luxury Vinyl Plank & Laminate](https://miracleflooringa.com/#services): 100% waterproof SPC rigid core LVP with 20mil+ commercial wear layers, acoustic underlayment, and subfloor leveling.
+- [Custom Hardwood Stairs & Floor Repairs](https://miracleflooringa.com/#services): Replacing carpet with solid hardwood treads, clean white risers, flush nosing, and invisible board lacing/weaving repairs.
+
+## Direct Contact & Service Info
+- **Phone:** (470) 353-6909
+- **Email:** Flooringmiracle@gmail.com
+- **Headquarters:** 4107 Christacy Way, Marietta, GA 30066 (Cobb County)
+- **Service Radius:** Marietta, East Cobb, Kennesaw, Roswell, Alpharetta, Sandy Springs, Woodstock, and Smyrna, Georgia.
+- **Consultation:** Free in-home estimate with moisture check and sample swatches.
+- **Request Estimate:** https://miracleflooringa.com/#estimate-section
+
+## Extended Documentation
+- [Full LLM Context](https://miracleflooringa.com/llms-full.txt): Detailed technical specifications, grit progression, finish chemistry, and local service coverage.
