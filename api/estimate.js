@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
     let recaptchaScore = null;
 
-    // Verify token with Google reCAPTCHA v3
+    // Verify token with Google reCAPTCHA v3 if secret key is present
     if (secretKey && token) {
       try {
         const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
@@ -42,24 +42,60 @@ export default async function handler(req, res) {
       }
     }
 
-    // Lead payload
+    // Split name for CRM field compatibility
+    const trimmedName = (name || '').trim();
+    const nameParts = trimmedName.split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    // Lead payload formatted for LeadConnector / HighLevel CRM
     const leadPayload = {
-      name,
-      phone,
-      zip,
+      name: trimmedName,
+      full_name: trimmedName,
+      first_name: firstName,
+      last_name: lastName,
+      phone: (phone || '').trim(),
+      postal_code: (zip || '').trim(),
+      zip: (zip || '').trim(),
       service: service || 'Hardwood Installation',
+      project_type: service || 'Hardwood Installation',
       sqft: sqft || 'Not specified',
+      area_sqft: sqft || 'Not specified',
       notes: notes || '',
+      message: notes || '',
       source: 'Miracle Flooring Website',
+      tags: ['Website Lead', 'In-Home Estimate', service || 'Hardwood Installation'],
       submittedAt: new Date().toISOString(),
       recaptchaScore,
     };
 
     console.log('[Miracle Flooring Lead Received]', leadPayload);
 
+    // Forward to LeadConnector Webhook
+    const webhookUrl = process.env.LEADCONNECTOR_WEBHOOK_URL || 'https://services.leadconnectorhq.com/hooks/ymHBPWR9QqVwcDPyBUn1/webhook-trigger/NEXjZfDUurVXM4Qr6MtV';
+
+    let webhookDelivered = false;
+    try {
+      const hookRes = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'User-Agent': 'Miracle-Flooring-Website/1.0',
+        },
+        body: JSON.stringify(leadPayload),
+      });
+
+      const hookText = await hookRes.text();
+      webhookDelivered = hookRes.ok;
+      console.log('[LeadConnector Webhook Result]', hookRes.status, hookText);
+    } catch (hookErr) {
+      console.error('[LeadConnector Webhook Delivery Error]', hookErr);
+    }
+
     return res.status(200).json({
       success: true,
       message: 'Estimate request received successfully.',
+      webhookDelivered,
     });
   } catch (error) {
     console.error('Error processing estimate request:', error);

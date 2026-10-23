@@ -31,6 +31,8 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
     'Floor Repairs & Patching',
   ];
 
+  const LEADCONNECTOR_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/ymHBPWR9QqVwcDPyBUn1/webhook-trigger/NEXjZfDUurVXM4Qr6MtV';
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -50,29 +52,57 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
       }
     }
 
+    const trimmedName = name.trim();
+    const nameParts = trimmedName.split(/\s+/);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    const leadData = {
+      name: trimmedName,
+      full_name: trimmedName,
+      first_name: firstName,
+      last_name: lastName,
+      phone: phone.trim(),
+      postal_code: zip.trim(),
+      zip: zip.trim(),
+      service: selectedService,
+      project_type: selectedService,
+      sqft: sqft || 'Not specified',
+      area_sqft: sqft || 'Not specified',
+      notes: notes.trim(),
+      message: notes.trim(),
+      source: 'Miracle Flooring Website',
+      tags: ['Website Lead', 'In-Home Estimate', selectedService],
+      submittedAt: new Date().toISOString(),
+      token: recaptchaToken,
+    };
+
     try {
+      // 1. Primary: Submit through Vercel serverless API (verifies reCAPTCHA & forwards to Webhook)
       const response = await fetch('/api/estimate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          phone,
-          zip,
-          service: selectedService,
-          sqft,
-          notes,
-          token: recaptchaToken,
-        }),
+        body: JSON.stringify(leadData),
       });
 
       const result = await response.json().catch(() => ({}));
       if (response.ok && result.success) {
         setSubmitted(true);
       } else {
-        setErrorMessage(result.message || 'Error submitting request. Please call (470) 353-6909.');
+        throw new Error(result.message || 'API submission fallback needed');
       }
     } catch (err) {
-      console.warn('Network error, completing gracefully:', err);
+      console.warn('Vercel API route unavailable, delivering directly to LeadConnector Webhook:', err);
+      // 2. Resilient Fallback: Deliver directly from client to LeadConnector Webhook
+      try {
+        await fetch(LEADCONNECTOR_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(leadData),
+        });
+      } catch (webhookErr) {
+        console.error('LeadConnector direct webhook error:', webhookErr);
+      }
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
