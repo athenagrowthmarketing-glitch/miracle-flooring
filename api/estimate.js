@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, phone, zip, service, sqft, notes, token } = req.body || {};
+    const { name, phone, email, zip, service, sqft, notes, token } = req.body || {};
 
     if (!name || !phone || !zip) {
       return res.status(400).json({ success: false, message: 'Name, phone, and ZIP code are required.' });
@@ -54,6 +54,7 @@ export default async function handler(req, res) {
       full_name: trimmedName,
       first_name: firstName,
       last_name: lastName,
+      email: (email || '').trim(),
       phone: (phone || '').trim(),
       postal_code: (zip || '').trim(),
       zip: (zip || '').trim(),

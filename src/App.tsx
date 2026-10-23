@@ -10,6 +10,7 @@ import { RefinishingFocus } from './components/RefinishingFocus.tsx';
 import { Reviews } from './components/Reviews.tsx';
 import { ServiceAreas } from './components/ServiceAreas.tsx';
 import { EstimateSection } from './components/EstimateSection.tsx';
+import { EmailSection } from './components/EmailSection.tsx';
 import { Footer } from './components/Footer.tsx';
 import { MobileActionBar } from './components/MobileActionBar.tsx';
 import { LegalModals } from './components/LegalModals.tsx';
@@ -64,6 +65,9 @@ export function App() {
 
         {/* 11. Final Conversion In-Home Estimate Section */}
         <EstimateSection initialService={selectedService} />
+
+        {/* 12. Direct Email & Floor Plan Inquiries */}
+        <EmailSection />
       </main>
 
       {/* 12. Complete Footer with Mandatory Athena Credit & Legal Links */}

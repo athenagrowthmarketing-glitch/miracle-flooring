@@ -10,6 +10,7 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
   const [selectedService, setSelectedService] = useState(initialService || 'Hardwood Installation');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [zip, setZip] = useState('');
   const [sqft, setSqft] = useState('');
   const [notes, setNotes] = useState('');
@@ -62,6 +63,7 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
       full_name: trimmedName,
       first_name: firstName,
       last_name: lastName,
+      email: email.trim(),
       phone: phone.trim(),
       postal_code: zip.trim(),
       zip: zip.trim(),
@@ -183,6 +185,7 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
                       setStep(1);
                       setName('');
                       setPhone('');
+                      setEmail('');
                       setZip('');
                       setNotes('');
                     }}
@@ -271,24 +274,40 @@ export const EstimateSection: React.FC<EstimateSectionProps> = ({ initialService
                         </div>
                       </div>
 
-                      {/* ZIP Code */}
-                      <div className="space-y-1.5">
-                        <label className="block text-xs font-semibold text-brand-charcoal">
-                          Metro Atlanta ZIP Code *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="e.g. 30066 (Marietta), 30075 (Roswell)..."
-                          value={zip}
-                          onChange={(e) => setZip(e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-brand-charcoal/20 text-sm focus:outline-none focus:border-brand-navy bg-brand-stone/30"
-                        />
+                      {/* Email & ZIP Code */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-1.5">
+                          <label className="block text-xs font-semibold text-brand-charcoal">
+                            Email Address *
+                          </label>
+                          <input
+                            type="email"
+                            required
+                            placeholder="john@example.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-brand-charcoal/20 text-sm focus:outline-none focus:border-brand-navy bg-brand-stone/30"
+                          />
+                        </div>
+
+                        <div className="space-y-1.5">
+                          <label className="block text-xs font-semibold text-brand-charcoal">
+                            Metro Atlanta ZIP Code *
+                          </label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="e.g. 30066 (Marietta)..."
+                            value={zip}
+                            onChange={(e) => setZip(e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-brand-charcoal/20 text-sm focus:outline-none focus:border-brand-navy bg-brand-stone/30"
+                          />
+                        </div>
                       </div>
 
                       <button
                         type="button"
-                        disabled={!name || !phone || !zip}
+                        disabled={!name || !phone || !email || !zip}
                         onClick={() => setStep(2)}
                         className="w-full py-4 bg-brand-navy hover:bg-brand-red disabled:opacity-50 disabled:hover:bg-brand-navy text-white font-semibold text-sm rounded-lg transition-colors flex items-center justify-center space-x-2 mt-2 shadow-md"
                       >

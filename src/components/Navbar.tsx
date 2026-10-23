@@ -127,6 +127,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimate }) => {
             <a href="#service-areas" className="hover:text-brand-red transition-colors">
               Service Areas
             </a>
+            <a href="#email-contact" className="hover:text-brand-red transition-colors">
+              Email Us
+            </a>
           </div>
 
           {/* Right Action Button & Phone */}
@@ -214,6 +217,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEstimate }) => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Service Areas (Marietta & Metro Atlanta)
+              </a>
+              <a
+                href="#email-contact"
+                className="block px-3 py-2 text-brand-charcoal font-medium rounded hover:bg-brand-stone"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Direct Email & Floor Plans
               </a>
             </div>
 
