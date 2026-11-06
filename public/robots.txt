@@ -40,5 +40,4 @@ User-agent: Google-Extended
 Allow: /
 
 # Sitemaps
-Sitemap: https://miracleflooringa.com/sitemap.xml
-Sitemap: https://site-miracle.vercel.app/sitemap.xml
+Sitemap: https://www.miracleflooringa.com/sitemap.xml
